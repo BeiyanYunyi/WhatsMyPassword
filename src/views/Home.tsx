@@ -18,6 +18,7 @@ const Home: Component = () => {
           <div class="border-2 border-dashed hover:border-solid border-gray-200 rounded-lg p-4 text-center">
             主密码
             <input
+              class="border-2 border-dashed focus:border-solid outline-none"
               style={{ width: '100%' }}
               onChange={(e) => {
                 setMainPassword(e.currentTarget.value);
@@ -29,6 +30,7 @@ const Home: Component = () => {
             <div class="flex flex-col gap-2">
               <p>用于生成密码的字符串</p>
               <textarea
+                class="border-2 border-dashed focus:border-solid outline-none"
                 style={{ width: '100%', height: '100%' }}
                 onChange={(e) => {
                   setStrToHash(e.currentTarget.value);

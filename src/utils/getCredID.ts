@@ -1,7 +1,7 @@
 import { decode } from 'cbor-x/decode';
 import { uAryToB64 } from './hashForPassword';
 
-const getAAGuid = async () => {
+const getCredID = async () => {
   const res = await navigator.credentials.create({
     publicKey: {
       attestation: 'direct',
@@ -23,7 +23,9 @@ const getAAGuid = async () => {
   });
   const attestation = decode(new Uint8Array((res as any).response.attestationObject));
   const uary: Uint8Array = attestation.authData;
-  return uAryToB64(uary.slice(37, 53));
+  const lenary = uary.slice(53, 55);
+  const length = lenary[0] * 255 + lenary[1];
+  return uAryToB64(uary.slice(55, 55 + length));
 };
 
-export default getAAGuid;
+export default getCredID;

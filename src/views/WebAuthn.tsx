@@ -1,7 +1,7 @@
 import { Component, createEffect, createSignal, Show } from 'solid-js';
 import Header from '../components/Header';
 import hashForPassword from '../utils/hashForPassword';
-import getAAGuid from '../utils/getAAGuid';
+import getCredID from '../utils/getCredID';
 
 const WebAuthn: Component = () => {
   const [strToHash, setStrToHash] = createSignal('');
@@ -13,7 +13,7 @@ const WebAuthn: Component = () => {
   });
   const handleClick = async (e: MouseEvent) => {
     e.preventDefault();
-    const res = await getAAGuid();
+    const res = await getCredID();
     setMainPassword(res);
   };
   return (

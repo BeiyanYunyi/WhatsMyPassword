@@ -11,7 +11,7 @@ const getCredID = async () => {
         userVerification: 'discouraged',
       },
       challenge: new Uint8Array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]),
-      pubKeyCredParams: [],
+      pubKeyCredParams: [{ type: 'public-key', alg: -44 }],
       rp: { name: 'wmpwd' },
       user: {
         id: new Uint8Array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]),

@@ -12,7 +12,7 @@ const Home: Component = () => {
   });
   return (
     <>
-      <Header title="🔒 我的密码是什么" />
+      <Header title="🔐 我的密码是什么" />
       <main>
         <div class="flex flex-col mt-4 gap-4 mx-auto max-w-7xl">
           <div class="border-2 border-dashed hover:border-solid border-gray-200 rounded-lg p-4 text-center">

@@ -9,7 +9,7 @@ const About: Component = () => {
       <main>
         <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
           <article class="prose prose-neutral">
-            <h1>🔒 我的密码是什么</h1>
+            <h1>🔐 我的密码是什么</h1>
             <p>用一个主密码和与网站对应的副密码来做到“一个网站一个密码”。</p>
             <h2>✨ 特性</h2>
             <ul>

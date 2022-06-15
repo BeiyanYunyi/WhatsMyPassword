@@ -7,6 +7,7 @@ const Nav: Component = () => {
 
   const links = [
     { text: '主页', to: '/' },
+    { text: 'WebAuthn', to: '/webauthn' },
     { text: '关于', to: '/about' },
   ];
   const activeClass = 'text-white bg-gray-900';

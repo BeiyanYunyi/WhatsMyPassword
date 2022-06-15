@@ -3,9 +3,9 @@ import { Routes, Route, Router } from 'solid-app-router';
 
 import Home from './views/Home';
 import Nav from './components/Nav';
-
-const About = lazy(() => import('./views/About'));
-const NotFound = lazy(() => import('./views/NotFound'));
+import About from './views/About';
+import NotFound from './views/NotFound';
+import WebAuthn from './views/WebAuthn';
 
 const App: Component = () => {
   return (
@@ -14,6 +14,7 @@ const App: Component = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/webauthn" element={<WebAuthn />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>

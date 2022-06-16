@@ -20,17 +20,17 @@ const WebAuthn: Component = () => {
     <>
       <Header title="🔐 我的密码是什么（WebAuthn）" />
       <main>
-        <div class="flex flex-col mt-4 gap-4 mx-auto max-w-7xl">
-          <div class="border-2 border-dashed hover:border-solid border-gray-200 rounded-lg p-4 text-center">
-            <div class="flex flex-col gap-2 items-center">
+        <div class="mx-auto mt-4 flex max-w-7xl flex-col gap-4">
+          <div class="rounded-lg border-2 border-dashed border-gray-200 p-4 text-center hover:border-solid">
+            <div class="flex flex-col items-center gap-2">
               <p>WebAuthn</p>
               <button
                 onClick={handleClick}
                 disabled={!!mainPassword()}
                 class={
                   mainPassword()
-                    ? 'w-fit bg-green-400 px-2 py-1 rounded-md border-2 border-green-400 border-dashed'
-                    : 'w-fit px-2 py-1 bg-slate-300 rounded-md border-2 border-slate-200 border-dashed text-slate-600'
+                    ? 'w-fit rounded-md border-2 border-dashed border-green-400 bg-green-400 px-2 py-1'
+                    : 'w-fit rounded-md border-2 border-dashed border-slate-200 bg-slate-300 px-2 py-1 text-slate-600'
                 }
               >
                 {mainPassword() ? '✅ 已验证' : '🔒 点击验证'}
@@ -38,12 +38,12 @@ const WebAuthn: Component = () => {
             </div>
           </div>
           <Show when={!!mainPassword()}>
-            <div class="border-2 border-dashed hover:border-solid border-gray-200 rounded-lg p-4 text-center">
+            <div class="rounded-lg border-2 border-dashed border-gray-200 p-4 text-center hover:border-solid">
               <div class="flex flex-col gap-2">
                 <p>用于生成密码的字符串</p>
                 <textarea
                   disabled={!mainPassword()}
-                  class="border-2 border-dashed focus:border-solid outline-none"
+                  class="border-2 border-dashed outline-none focus:border-solid"
                   style={{ width: '100%', height: '100%' }}
                   onChange={(e) => {
                     setStrToHash(e.currentTarget.value);
@@ -52,7 +52,7 @@ const WebAuthn: Component = () => {
                 />
               </div>
             </div>
-            <div class="border-2 border-dashed hover:border-solid border-gray-200 rounded-lg p-4 text-center">
+            <div class="rounded-lg border-2 border-dashed border-gray-200 p-4 text-center hover:border-solid">
               <div class="flex flex-col gap-2 break-all">
                 <p>上一栏输入完后点击别处开始生成</p>
                 <code class="font-sans">{hash()}</code>

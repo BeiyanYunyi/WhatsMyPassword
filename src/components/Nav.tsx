@@ -15,15 +15,15 @@ const Nav: Component = () => {
 
   return (
     <nav class="bg-gray-800">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between h-16">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex h-16 items-center justify-between">
           <div class="flex items-center">
             <div class="flex items-baseline space-x-4">
               <For each={links}>
                 {(link, index) => (
                   <Link
                     href={link.to}
-                    class={`px-3 py-2 rounded-md text-sm font-medium ${
+                    class={`rounded-md px-3 py-2 text-sm font-medium ${
                       currentLocation() === link.to ? activeClass : inactiveClass
                     } ${index() > 0 && 'ml-4'}`}
                   >

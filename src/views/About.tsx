@@ -7,8 +7,8 @@ const About: Component = () => {
     <>
       <Header title="关于" />
       <main>
-        <div class="max-w-7xl mx-auto py-6 px-6 lg:px-8">
-          <article class="prose prose-sm md:prose-base prose-neutral">
+        <div class="mx-auto max-w-7xl py-6 px-6 lg:px-8">
+          <article class="prose prose-sm prose-neutral md:prose-base">
             <h1>🔐 我的密码是什么</h1>
             <p>用一个主密码和与网站对应的副密码来做到“一个网站一个密码”。</p>
             <h2>✨ 特性</h2>
@@ -37,7 +37,7 @@ const About: Component = () => {
                 target="_blank"
                 class="not-prose"
               >
-                <img class="h-8 w-8 inline" src={GhIcon} />
+                <img class="inline h-8 w-8" src={GhIcon} />
               </a>
             </p>
           </article>

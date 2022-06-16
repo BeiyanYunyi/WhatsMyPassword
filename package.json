@@ -2,6 +2,7 @@
   "name": "whats-my-password",
   "version": "1.0.0",
   "description": "Generate unique password for each website",
+  "packageManager": "pnpm@7.2.1",
   "scripts": {
     "start": "vite",
     "dev": "vite",

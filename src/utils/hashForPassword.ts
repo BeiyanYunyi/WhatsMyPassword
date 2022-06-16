@@ -30,6 +30,26 @@ const getDerivation = async (param: {
   return derivation;
 };
 
+/**
+ * 从密码生成加密用的密钥。
+ * 接受一个参数作为密码，默认使用 JWT_SECRET 作为密码。
+ * @param password 自定义密码，暂未使用。
+ */
+const getKey = async (password: string) => {
+  const derivation = await getDerivation({
+    stringToHash: password,
+    salt: '1145141919810',
+  });
+  const importedEncryptionKey = await crypto.subtle.importKey(
+    'raw',
+    derivation,
+    { name: 'HMAC', hash: 'SHA-512' },
+    false,
+    ['sign', 'verify'],
+  );
+  return importedEncryptionKey;
+};
+
 export const uAryToB64 = (uary: Uint8Array) => {
   let str = '';
   for (let i = 0; i < uary.byteLength; i += 1) {
@@ -40,10 +60,15 @@ export const uAryToB64 = (uary: Uint8Array) => {
 
 const hashForPassword = async (mainPassword: string, stringToHash: string) => {
   if (!mainPassword || !stringToHash) return '生成的密码将会显示在此处';
+  const hmacKey = await getKey(mainPassword);
+  const textEncoder = new TextEncoder();
+  const stringToHashBuffer = textEncoder.encode(stringToHash);
+  const signature = await crypto.subtle.sign('HMAC', hmacKey, stringToHashBuffer);
   const der = await getDerivation({
-    stringToHash,
-    salt: mainPassword,
+    stringToHash: uAryToB64(new Uint8Array(signature)),
+    salt: '',
     length: 48,
+    iterations: 1,
   });
   const uary = new Uint8Array(der);
   return '!' + uAryToB64(uary);

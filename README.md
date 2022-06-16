@@ -9,13 +9,10 @@
 - 使用 PBKDF2 算法
 - 使用 solidjs 作为前端框架
 - 使用 tailwindcss
-- 支持通过 Web Authentication API 使用 YubiKey 等外置加密硬件获得主密码
 
 ## ⚛ 原理
 
-通过 PBKDF2 算法迭代 1048576 次，以主密码为盐，以“用于生成密码的字符串”为输入，使用 SHA-512 生成一个哈希值，使用 Base64 转译，再在前面加一个感叹号，这就是生成的密码了。
-
-关于 WebAuthn 的部分参考了 MDN 和 [yubico 的说明](https://developers.yubico.com/WebAuthn/WebAuthn_Developer_Guide/WebAuthn_Client_Registration.html)。What's my password 将使用 Web Authentication API 返回值中的 AAGUID 字段作为主密码。
+通过 PBKDF2 算法迭代 1048576 次，以主密码为输入，使用 SHA-512 生成一个哈希值，使用 HMAC 对副密码签名，再用 PBKDF2 算法使用 SHA-512 算法生成指定长度的哈希值，最后用 Base64 转译，再在前面加一个感叹号，这就是生成的密码了。
 
 ## ❤ 贡献
 

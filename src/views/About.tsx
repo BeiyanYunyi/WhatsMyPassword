@@ -31,11 +31,15 @@ const About: Component = () => {
             <h2>❤ 贡献</h2>
             <p>
               编写此项目时，作者并不具备密码学相关的知识。若对本项目的安全性存在顾虑或改进措施，也欢迎来提
-              issue 或 PR。不过无论如何，欢迎来 Star。
+              issue 或 PR。不过无论如何，欢迎来 Star：
+              <a
+                href="https://github.com/lixiang810/WhatsMyPassword"
+                target="_blank"
+                class="not-prose"
+              >
+                <img class="h-8 w-8 inline" src={GhIcon} />
+              </a>
             </p>
-            <a href="https://github.com/lixiang810/WhatsMyPassword" target="_blank" class="w-fit">
-              <img class="h-8 w-8" src={GhIcon} />
-            </a>
           </article>
         </div>
       </main>

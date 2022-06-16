@@ -8,7 +8,7 @@ const About: Component = () => {
       <Header title="关于" />
       <main>
         <div class="mx-auto max-w-7xl py-6 px-6 lg:px-8">
-          <article class="prose prose-sm prose-neutral md:prose-base">
+          <article class="md:prose prose-sm rounded-lg border-2 border-dashed backdrop-filter backdrop-saturate-50 backdrop-blur-8 border-gray-200 p-4 hover:border-solid">
             <h1>🔐 我的密码是什么</h1>
             <p>用一个主密码和与网站对应的副密码来做到“一个网站一个密码”。</p>
             <h2>✨ 特性</h2>
@@ -20,7 +20,7 @@ const About: Component = () => {
               <li>使用浏览器自带 Crypto API</li>
               <li>使用 PBKDF2 算法</li>
               <li>使用 solidjs 作为前端框架</li>
-              <li>使用 tailwindcss</li>
+              <li>使用 windicss</li>
             </ul>
             <h2>⚛ 原理</h2>
             <p>
@@ -32,12 +32,8 @@ const About: Component = () => {
             <p>
               编写此项目时，作者并不具备密码学相关的知识。若对本项目的安全性存在顾虑或改进措施，也欢迎来提
               issue 或 PR。不过无论如何，欢迎来 Star：
-              <a
-                href="https://github.com/lixiang810/WhatsMyPassword"
-                target="_blank"
-                class="not-prose"
-              >
-                <img class="inline h-8 w-8" src={GhIcon} />
+              <a href="https://github.com/lixiang810/WhatsMyPassword" target="_blank">
+                <img class="inline !m-0 h-8 w-8" src={GhIcon} />
               </a>
             </p>
           </article>

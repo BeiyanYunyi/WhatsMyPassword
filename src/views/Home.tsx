@@ -1,5 +1,6 @@
 import { Component, createEffect, createSignal } from 'solid-js';
 import Header from '../components/Header';
+import Panel from '../components/Panel';
 import hashForPassword from '../utils/hashForPassword';
 
 const Home: Component = () => {
@@ -22,11 +23,11 @@ const Home: Component = () => {
       <Header title="🔐 我的密码是什么" />
       <main>
         <div class="mx-auto mt-4 flex max-w-7xl flex-col gap-4">
-          <div class="rounded-lg border-2 border-dashed border-gray-200 p-4 text-center hover:border-solid">
+          <Panel>
             主密码
             <label class="flex flex-row gap-1 border-2 border-dashed focus-within:border-solid">
               <input
-                class="grow outline-none"
+                class="flex-grow outline-none"
                 type={show() ? 'text' : 'password'}
                 onChange={(e) => {
                   setMainPassword(e.currentTarget.value);
@@ -44,8 +45,8 @@ const Home: Component = () => {
                 显示
               </button>
             </label>
-          </div>
-          <div class="rounded-lg border-2 border-dashed border-gray-200 p-4 text-center hover:border-solid">
+          </Panel>
+          <Panel>
             <div class="flex flex-col gap-2">
               <p>用于生成密码的字符串</p>
               <textarea
@@ -57,13 +58,13 @@ const Home: Component = () => {
                 value={strToHash()}
               />
             </div>
-          </div>
-          <div class="rounded-lg border-2 border-dashed border-gray-200 p-4 text-center hover:border-solid">
+          </Panel>
+          <Panel>
             <div class="flex flex-col gap-2 break-all">
               <p>上面两栏输入完后点击别处开始生成</p>
               <code class="font-sans">{hash()}</code>
             </div>
-          </div>
+          </Panel>
         </div>
       </main>
     </>

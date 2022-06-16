@@ -23,7 +23,7 @@ const Home: Component = () => {
       <Header title="🔐 我的密码是什么" />
       <main>
         <div class="mx-auto mt-4 flex max-w-7xl flex-col gap-4">
-          <Panel>
+          <Panel center>
             主密码
             <label class="flex flex-row gap-1 border-2 border-dashed focus-within:border-solid">
               <input
@@ -46,7 +46,7 @@ const Home: Component = () => {
               </button>
             </label>
           </Panel>
-          <Panel>
+          <Panel center>
             <div class="flex flex-col gap-2">
               <p>用于生成密码的字符串</p>
               <textarea
@@ -59,7 +59,8 @@ const Home: Component = () => {
               />
             </div>
           </Panel>
-          <Panel>
+
+          <Panel center>
             <div class="flex flex-col gap-2 break-all">
               <p>上面两栏输入完后点击别处开始生成</p>
               <code class="font-sans">{hash()}</code>

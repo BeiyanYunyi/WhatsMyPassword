@@ -1,4 +1,5 @@
 import { Component, createEffect, createSignal } from 'solid-js';
+import EyeIcon from '@sicons/ionicons5/EyeOutline.svg';
 import Header from '../components/Header';
 import Panel from '../components/Panel';
 import hashForPassword from '../utils/hashForPassword';
@@ -42,7 +43,7 @@ const Home: Component = () => {
                 onTouchStart={showPassword}
                 onTouchEnd={hidePassword}
               >
-                显示
+                <img src={EyeIcon} width={16} />
               </button>
             </label>
           </Panel>

@@ -5,6 +5,7 @@ import Home from './views/Home';
 import Nav from './components/Nav';
 import About from './views/About';
 import NotFound from './views/NotFound';
+import Ribbon from './components/Ribbon';
 // import WebAuthn from './views/WebAuthn';
 
 const App: Component = () => {
@@ -17,6 +18,7 @@ const App: Component = () => {
         {/* <Route path="/webauthn" element={<WebAuthn />} /> */}
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Ribbon />
     </Router>
   );
 };

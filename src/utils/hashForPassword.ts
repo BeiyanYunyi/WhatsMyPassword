@@ -68,7 +68,7 @@ const hashForPassword = async (mainPassword: string, stringToHash: string) => {
     stringToHash: uAryToB64(new Uint8Array(signature)),
     salt: '',
     length: 48,
-    iterations: 1,
+    iterations: 1048576,
   });
   const uary = new Uint8Array(der);
   return '!' + uAryToB64(uary);

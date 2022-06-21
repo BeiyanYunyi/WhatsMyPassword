@@ -64,7 +64,7 @@ const Home: Component = () => {
           <Panel center>
             <div class="flex flex-col gap-2 break-all">
               <p>上面两栏输入完后点击别处开始生成</p>
-              <code class="font-sans">{hash()}</code>
+              <code class="font-mono">{hash()}</code>
             </div>
           </Panel>
         </div>

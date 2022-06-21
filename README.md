@@ -4,11 +4,11 @@
 
 ## ✨ 特性
 
-- 不与任何服务器通信（对于部署在 Pages 上的本示例站并不严格成立，因为 Cloudflare 会插入一个统计脚本）
+- 不与任何服务器通信（对于部署在 Pages 上的本示例站并不严格成立，因为 Cloudflare 会插入一个统计脚本），密码生成全程由浏览器进行
 - 使用浏览器自带 Crypto API
 - 使用 PBKDF2 算法
 - 使用 solidjs 作为前端框架
-- 使用 tailwindcss
+- 使用 windicss
 
 ## ⚛ 原理
 

@@ -17,7 +17,7 @@ const About: Component = () => {
               <ul>
                 <li>
                   不与任何服务器通信（对于部署在 Pages 上的本示例站并不严格成立，因为 Cloudflare
-                  会插入一个统计脚本）
+                  会插入一个统计脚本），密码生成全程由浏览器进行
                 </li>
                 <li>使用浏览器自带 Crypto API</li>
                 <li>使用 PBKDF2 算法</li>

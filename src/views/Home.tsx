@@ -8,11 +8,12 @@ const Home: Component = () => {
   const [strToHash, setStrToHash] = createSignal('');
   const [mainPassword, setMainPassword] = createSignal('');
   const [hash, setHash] = createSignal('');
+  const [iterations, setIterations] = createSignal(1048576);
   const [show, setShow] = createSignal(false);
-  createEffect(() => {
+  const generatePassword = () => {
     setHash('生成中');
-    hashForPassword(mainPassword(), strToHash()).then((res) => setHash(res));
-  });
+    hashForPassword(mainPassword(), strToHash(), iterations()).then((res) => setHash(res));
+  };
   const showPassword = () => {
     setShow(true);
   };
@@ -30,7 +31,7 @@ const Home: Component = () => {
               <input
                 class="flex-grow outline-none"
                 type={show() ? 'text' : 'password'}
-                onChange={(e) => {
+                onInput={(e) => {
                   setMainPassword(e.currentTarget.value);
                 }}
                 value={mainPassword()}
@@ -53,17 +54,39 @@ const Home: Component = () => {
               <textarea
                 class="border-2 border-dashed outline-none focus:border-solid"
                 style={{ width: '100%', height: '100%' }}
-                onChange={(e) => {
+                onInput={(e) => {
                   setStrToHash(e.currentTarget.value);
                 }}
                 value={strToHash()}
               />
             </div>
           </Panel>
+          <Panel center>
+            <div class="flex flex-col gap-2 items-center">
+              <p>迭代次数（建议保持默认）</p>
+              <input
+                class="flex-grow outline-none border-dashed border-2"
+                type="number"
+                onChange={(e) => {
+                  const val = Number(e.currentTarget.value);
+                  if (!Number.isNaN(val)) setIterations(val);
+                }}
+                value={iterations()}
+              />
+            </div>
+          </Panel>
 
           <Panel center>
-            <div class="flex flex-col gap-2 break-all">
-              <p>上面两栏输入完后点击别处开始生成</p>
+            <div class="flex flex-col gap-2 break-all items-center">
+              <button
+                class="border-2 border-blue-400 border-dashed hover:border-solid rounded-full px-2 py-1"
+                onClick={(e) => {
+                  e.preventDefault();
+                  generatePassword();
+                }}
+              >
+                点击生成
+              </button>
               <code class="font-mono">{hash()}</code>
             </div>
           </Panel>

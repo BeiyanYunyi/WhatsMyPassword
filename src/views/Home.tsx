@@ -106,8 +106,12 @@ const Home: Component = () => {
                   <button
                     onClick={(e) => {
                       e.preventDefault();
-                      window.navigator.clipboard.writeText(hash());
-                      toast.success('已复制到剪贴板');
+                      const pms = window.navigator.clipboard.writeText(hash());
+                      toast.promise(pms, {
+                        loading: '正在复制到剪贴板',
+                        success: '已复制到剪贴板',
+                        error: '复制失败',
+                      });
                     }}
                   >
                     <img src={ClipboardIcon} width={16} />

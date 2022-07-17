@@ -1,10 +1,10 @@
-import { Component, createEffect, createSignal, Show } from 'solid-js';
-import EyeIcon from '@sicons/ionicons5/EyeOutline.svg';
 import ClipboardIcon from '@sicons/ionicons5/ClipboardOutline.svg';
+import EyeIcon from '@sicons/ionicons5/EyeOutline.svg';
+import { Component, createSignal, Show } from 'solid-js';
+import toast from 'solid-toast';
 import Header from '../components/Header';
 import Panel from '../components/Panel';
 import hashForPassword from '../utils/hashForPassword';
-import toast from 'solid-toast';
 
 const Home: Component = () => {
   const [strToHash, setStrToHash] = createSignal('');

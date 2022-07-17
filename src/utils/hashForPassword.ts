@@ -7,8 +7,8 @@ export const uAryToB64 = (uary: Uint8Array) => {
 };
 
 const hashForPassword = async (mainPassword: string, stringToHash: string, iterations: number) => {
-  if (!mainPassword || !stringToHash) return '主密码或副密码为空';
-  if (iterations <= 0) return '迭代次数需大于0';
+  if (!mainPassword || !stringToHash) return Promise.reject('主密码或副密码为空');
+  if (iterations <= 0) return Promise.reject('迭代次数需大于0');
   /**
    * 一个哈希函数，使用 SHA-256 算法从给定字符串生成一个哈希值。
    */

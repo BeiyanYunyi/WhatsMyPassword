@@ -1,4 +1,5 @@
 import { Component } from 'solid-js';
+import { Toaster } from 'solid-toast';
 import { Routes, Route, Router } from 'solid-app-router';
 
 import Home from './views/Home';
@@ -19,6 +20,7 @@ const App: Component = () => {
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Ribbon />
+      <Toaster position="top-center" />
     </Router>
   );
 };

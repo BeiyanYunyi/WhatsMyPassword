@@ -1,18 +1,31 @@
-import { Component, createEffect, createSignal } from 'solid-js';
+import { Component, createEffect, createSignal, Show } from 'solid-js';
 import EyeIcon from '@sicons/ionicons5/EyeOutline.svg';
+import ClipboardIcon from '@sicons/ionicons5/ClipboardOutline.svg';
 import Header from '../components/Header';
 import Panel from '../components/Panel';
 import hashForPassword from '../utils/hashForPassword';
+import toast from 'solid-toast';
 
 const Home: Component = () => {
   const [strToHash, setStrToHash] = createSignal('');
   const [mainPassword, setMainPassword] = createSignal('');
   const [hash, setHash] = createSignal('');
+  const [error, setError] = createSignal('');
   const [iterations, setIterations] = createSignal(1048576);
   const [show, setShow] = createSignal(false);
   const generatePassword = () => {
-    setHash('生成中');
-    hashForPassword(mainPassword(), strToHash(), iterations()).then((res) => setHash(res));
+    setHash('');
+    const pms = hashForPassword(mainPassword(), strToHash(), iterations());
+    toast.promise(pms, { loading: '生成中……', success: '已生成', error: '请检查参数' });
+    pms
+      .then((res) => {
+        setError('');
+        setHash(res);
+      })
+      .catch((e: string) => {
+        setError(e);
+        setHash('');
+      });
   };
   const showPassword = () => {
     setShow(true);
@@ -63,7 +76,7 @@ const Home: Component = () => {
           </Panel>
           <Panel center>
             <div class="flex flex-col gap-2 items-center">
-              <p>迭代次数（建议保持默认）</p>
+              <p>迭代次数（建议保持默认或更大）</p>
               <input
                 class="flex-grow outline-none border-dashed border-2"
                 type="number"
@@ -87,7 +100,21 @@ const Home: Component = () => {
               >
                 点击生成
               </button>
-              <code class="font-mono">{hash()}</code>
+              <div class="flex items-center gap-2">
+                <code class="font-mono">{hash()}</code>
+                <Show when={hash() !== ''}>
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      window.navigator.clipboard.writeText(hash());
+                      toast.success('已复制到剪贴板');
+                    }}
+                  >
+                    <img src={ClipboardIcon} width={16} />
+                  </button>
+                </Show>
+              </div>
+              <p class="text-red-600">{error()}</p>
             </div>
           </Panel>
         </div>

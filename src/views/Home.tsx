@@ -15,14 +15,14 @@ const Home: Component = () => {
   const generatePassword = () => {
     setHash('');
     const pms = hashForPassword(mainPassword(), strToHash(), iterations());
-    toast.promise(pms, { loading: '生成中……', success: '已生成', error: '请检查参数' });
+    toast.promise(pms, { loading: '生成中……', success: '已生成', error: '生成失败' });
     pms
       .then((res) => {
         setError('');
         setHash(res);
       })
-      .catch((e: string) => {
-        setError(e);
+      .catch((e: Error) => {
+        setError(e.message);
         setHash('');
       });
   };

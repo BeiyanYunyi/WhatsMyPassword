@@ -22,6 +22,7 @@ const About: Component = () => (
               <li>使用 PBKDF2 算法</li>
               <li>使用 solidjs 作为前端框架</li>
               <li>使用 windicss</li>
+              <li>使用 Service Worker，是 PWA</li>
             </ul>
             <h2>⚛ 原理</h2>
             <p>

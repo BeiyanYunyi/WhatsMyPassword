@@ -1,5 +1,19 @@
-declare module '*.svg';
-declare module '*.png';
-declare module '*.jpg';
-declare module '*.jpeg';
-declare module '*.gif';
+/// <reference types="vite/client" />
+
+declare module 'virtual:pwa-register/solid' {
+  import type { Accessor, Setter } from 'solid-js';
+
+  export interface RegisterSWOptions {
+    immediate?: boolean;
+    onNeedRefresh?: () => void;
+    onOfflineReady?: () => void;
+    onRegistered?: (registration: ServiceWorkerRegistration | undefined) => void;
+    onRegisterError?: (error: any) => void;
+  }
+
+  export function useRegisterSW(options?: RegisterSWOptions): {
+    needRefresh: [Accessor<boolean>, Setter<boolean>];
+    offlineReady: [Accessor<boolean>, Setter<boolean>];
+    updateServiceWorker: (reloadPage?: boolean) => Promise<void>;
+  };
+}

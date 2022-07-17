@@ -9,6 +9,7 @@
 - 使用 PBKDF2 算法
 - 使用 solidjs 作为前端框架
 - 使用 windicss
+- 使用 Service Worker，是 PWA
 
 ## ⚛ 原理
 

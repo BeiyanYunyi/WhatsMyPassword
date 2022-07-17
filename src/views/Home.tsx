@@ -1,5 +1,4 @@
-import ClipboardIcon from '@sicons/ionicons5/ClipboardOutline.svg';
-import EyeIcon from '@sicons/ionicons5/EyeOutline.svg';
+import { IoClipboardOutline, IoEye, IoEyeOutline } from 'solid-icons/io';
 import { Component, createSignal, Show } from 'solid-js';
 import toast from 'solid-toast';
 import Header from '../components/Header';
@@ -50,14 +49,16 @@ const Home: Component = () => {
                 value={mainPassword()}
               />
               <button
-                class="border-l-2 border-dashed px-2"
+                class="border-l-2 border-dashed px-2 flex items-center"
                 onPointerDown={showPassword}
                 onPointerUp={hidePassword}
                 onPointerLeave={hidePassword}
                 onTouchStart={showPassword}
                 onTouchEnd={hidePassword}
               >
-                <img src={EyeIcon} width={16} />
+                <Show when={show()} fallback={<IoEyeOutline size={16} />}>
+                  <IoEye size={16} />
+                </Show>
               </button>
             </label>
           </Panel>
@@ -114,7 +115,7 @@ const Home: Component = () => {
                       });
                     }}
                   >
-                    <img src={ClipboardIcon} width={16} />
+                    <IoClipboardOutline size={16} />
                   </button>
                 </Show>
               </div>

@@ -71,7 +71,7 @@ const hashForPassword = async (mainPassword: string, stringToHash: string, itera
     iterations,
   });
   const uary = new Uint8Array(der);
-  return `!${uAryToB64(uary)}`;
+  return `!${uAryToB64(uary).substring(0, 19)}`;
 };
 
 export default hashForPassword;

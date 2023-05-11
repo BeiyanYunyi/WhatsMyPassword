@@ -14,7 +14,7 @@ const Panel: ParentComponent<{ center?: boolean; prose?: boolean }> = (prop) => 
       'shadow-gray-300': true,
       'text-center': prop.center,
       filter: true,
-      'drop-shwdow-2xl': true,
+      'drop-shadow-2xl': true,
       transition: true,
       'md:prose': prop.prose,
       'prose-sm': prop.prose,
